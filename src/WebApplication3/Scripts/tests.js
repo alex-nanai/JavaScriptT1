@@ -1,8 +1,14 @@
-﻿test("Btn5 Click Test", function () {
-    expect(1);
-    var btn = document.getElementById('btn5');
-    QUnit.triggerEvent(btn, "click");
-    var result = txtInput.value;
-    var expected = '5';
-    equal(result, expected, 'Expected value: ' + expected + '  Actual value: ' + result);
+﻿module('Calculator Test Suite', { setup: function () { initialize(); } });
+
+test("Button Click Test", function () {
+    expect(11);
+    for (var i = 0; i < 10; i++) {
+        var btn = $('#btn' + i);
+        btn.trigger($.Event("click"));
+        var result = txtInput.value;
+        result = result.substr(result.length - 1, 1);
+        var expected = i.toString();
+        equal(result, expected, 'Expected value: ' + expected + '  Actual value: ' + result);
+    }
+    equal(txtInput.value.length, 10);
 });
